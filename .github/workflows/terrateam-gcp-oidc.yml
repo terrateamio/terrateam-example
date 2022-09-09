@@ -34,7 +34,7 @@ jobs:
       with:
           create_credentials_file: 'true'
           workload_identity_provider: '<example-workload-identity-provider>'
-          service_account: '<example-service-account>'
+          service_account: 'terrateam'
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
