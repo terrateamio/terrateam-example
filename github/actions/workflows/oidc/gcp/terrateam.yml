@@ -32,9 +32,9 @@ jobs:
         uses: google-github-actions/auth@v0
         with:
           create_credentials_file: 'true'
-          workload_identity_provider: '<example-workload-identity-provider>'
-          service_account: 'terrateam'
-          project_id: '<project-id>'
+          workload_identity_provider: 'projects/<PROJECT-NUMBER>/locations/global/workloadIdentityPools/terrateam/providers/terrateam'
+          service_account: 'terrateam@<PROJECT-ID>.iam.gserviceaccount.com'
+          project_id: '<PROJECT-ID>'
       - name: Run Terrateam Action
         id: terrateam
         uses: terrateamio/action@v1 # Do not replace with a custom image. Doing so may cause Terrateam to not operate as intended.
