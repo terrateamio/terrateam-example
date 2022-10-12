@@ -33,7 +33,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::1234567890:role/example-role
           aws-region: us-east-1
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Run Terrateam Action
