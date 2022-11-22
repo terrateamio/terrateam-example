@@ -5,7 +5,7 @@
 #
 # Looking for the Terrateam configuration file? .terrateam/config.yml.
 #
-# See https://docs.terrateam.io/configuration/overview for details
+# See https://terrateam.io/docs/configuration for details
 ##########################################################################
 name: 'Terrateam Workflow'
 on:
