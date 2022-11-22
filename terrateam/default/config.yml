@@ -1,13 +1,31 @@
 ##########################################################################
 # THIS FILE SHOULD LIVE IN .terrateam/config.yml
 ##########################################################################
-enabled: true
-version: "1"
-parallel_runs: 3
-when_modified:
-  file_patterns: ["**/*.tf", "**/*.tfvars"]
-  autoplan: true
-  autoapply: false
+access_control:
+  enabled: true
+  apply_require_all_dirspace_access: true
+  plan_require_all_dirspace_access: false
+  terrateam_config_updated: ['repo:admin']
+  unlock: ['*']
+  policies:
+    - tag_query: ''
+      apply: ['*']
+      apply_autoapprove: []
+      apply_force: []
+      apply_with_superapproval: []
+      plan: ['*']
+      superapproval: []
+apply_requirements:
+  checks:
+    approved:
+      enabled: false
+      count: 1
+    merge_conflicts:
+      enabled: true
+    status_checks:
+      enabled: true
+      ignore_matching: []
+  create_pending_apply_check: true
 automerge:
   enabled: false
   delete_branch: false
@@ -17,6 +35,9 @@ cost_estimation:
   provider: infracost
   currency: USD
 default_tf_version: latest
+destination_branches:
+dirs:
+enabled: true
 hooks:
   plan:
     pre: []
@@ -24,5 +45,11 @@ hooks:
   apply:
     pre: []
     post: []
+parallel_runs: 3
+version: "1"
+when_modified:
+  file_patterns: ["**/*.tf", "**/*.tfvars"]
+  autoplan: true
+  autoplan_draft_pr: true
+  autoapply: false
 workflows:
-dirs:
