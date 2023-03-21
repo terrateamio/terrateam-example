@@ -1,0 +1,28 @@
+# Define TG_BUCKET_PREFIX for Terraform state
+hooks:
+  all:
+    pre:
+      - type: env
+        name: TG_BUCKET_PREFIX
+        cmd: ['echo', 'ACME_TERRAFORM_']
+
+# Remove default when_modified rules
+# for Terragrunt overrides
+when_modified:
+  file_patterns: []
+
+# Run the Terragrunt CLI for all workflows
+workflows:
+  - tag_query: ""
+    terragrunt: true
+
+# Trigger Terrateam operations when any
+# terragrunt.hcl file is modified
+# except for the root terragrunt.hcl
+dirs:
+  "**/terragrunt.hcl":
+    when_modified:
+      file_patterns: ['${DIR}/terragrunt.hcl']
+  '.':
+    when_modified:
+      file_patterns: []
