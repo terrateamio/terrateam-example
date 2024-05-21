@@ -19,6 +19,9 @@ on:
         required: true
       api-base-url:
         description: 'API Base URL'
+      environment:
+        description: 'Environment in which to run the action'
+        type: environment
 jobs:
   terrateam:
     permissions: # Required to pass credentials to the Terrateam action
@@ -35,5 +38,7 @@ jobs:
         with:
           work-token: '${{ github.event.inputs.work-token }}'
           api-base-url: '${{ github.event.inputs.api-base-url }}'
+          environment: '${{ github.event.inputs.environment }}'
         env:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
+          VARIABLES_CONTEXT: ${{ toJson(vars) }}
