@@ -39,4 +39,3 @@
            api-base-url: '${{ github.event.inputs.api-base-url }}'
          env:
            SECRETS_CONTEXT: ${{ toJson(secrets) }}
-           VARIABLES_CONTEXT: ${{ toJson(vars) }}
